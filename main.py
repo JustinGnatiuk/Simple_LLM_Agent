@@ -26,8 +26,12 @@ def main():
             model='gemini-2.0-flash-001', contents=prompt
         )
 
-        print(f"Prompt tokens: {response.usage_metadata.prompt_token_count}")
-        print(f"Response tokens: {response.usage_metadata.candidates_token_count}")
+        if sys.argv[-1] == "--verbose":
+
+            print(f"User prompt: {sys.argv[-2]}")
+            print(f"Prompt tokens: {response.usage_metadata.prompt_token_count}")
+            print(f"Response tokens: {response.usage_metadata.candidates_token_count}")
+
         print(response.text)
 
 
